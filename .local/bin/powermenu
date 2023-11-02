@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function powermenu {
+		options="Cancel\nShutdown\nReboot\nSleep\nLock"
+		selected=$(echo -e $options | dmenu)
+		if [[ $selected = "Shutdown" ]]; then
+				loginctl poweroff
+		elif [[ $selected = "Reboot" ]]; then
+				loginctl reboot
+		elif [[ $selected = "Sleep" ]]; then
+				loginctl suspend
+		elif [[ $selected = "Lock" ]]; then
+				betterlockscreen -l
+		elif [[ $selected = "Cancel" ]]; then
+				return
+		fi
+}
+
+
+powermenu
+

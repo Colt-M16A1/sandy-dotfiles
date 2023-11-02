@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if sudo tlp-stat | grep -q "battery"; then
+		sudo tlp ac
+		notify-send "TLP: AC Mode"
+else
+    sudo tlp bat
+    notify-send "TLP: Battery Mode"
+fi
+
